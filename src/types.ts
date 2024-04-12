@@ -3,6 +3,7 @@
  *
  * @type {PluginOptionsTypes}
  * @property {boolean} enabled - Enable or disable plugin
+ * @property {array} linkableCollections - Define which collections are usable in the menu
  */
 export const defaultPluginOptions: PluginOptionsTypes = {
   /**
@@ -10,6 +11,18 @@ export const defaultPluginOptions: PluginOptionsTypes = {
    * @default false
    */
   enabled: false,
+
+  /**
+   * Defines which collections are usable in the menu
+   * @default []
+   */
+  linkableCollections: [],
+
+  /**
+   * Allow inline documents
+   * @default false
+   */
+  allowInlineDocuments: false,
 }
 
 export interface PluginOptionsTypes {
@@ -18,4 +31,16 @@ export interface PluginOptionsTypes {
    * @default false
    */
   enabled?: boolean
+
+  /**
+   * Defines which collections are usable in the menu
+   * @default []
+   */
+  linkableCollections: Array<string>
+
+  /**
+   * Allow inline documents
+   * @default false
+   */
+  allowInlineDocuments?: boolean
 }

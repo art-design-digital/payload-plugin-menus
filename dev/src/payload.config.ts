@@ -38,7 +38,13 @@ export default buildConfig({
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
-  plugins: [menuPlugin({ enabled: true })],
+  plugins: [
+    menuPlugin({
+      enabled: true,
+      linkableCollections: ['examples', 'users'],
+      allowInlineDocuments: true,
+    }),
+  ],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
