@@ -5,6 +5,8 @@ type MenuItemTypeFieldProps = {
 }
 
 const menuItemTypeField = (props?: MenuItemTypeFieldProps) => {
+  console.log('Rendere Typenauswahl mit Kindern?', props?.allowChildElements)
+
   const options = [
     {
       label: {

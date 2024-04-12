@@ -1,6 +1,6 @@
 import { formatSlug } from '../utils/slug'
 import MenuItemRowLabel from '../components/MenuItemRowLabel'
-import { CollectionConfig } from 'payload/types'
+import { CollectionConfig, Field, Fields } from 'payload/types'
 import translations from '../translations/translations'
 import menuItemLabelField from '../fields/menuItemLabelField'
 import menuItemTypeField from '../fields/menuItemTypeField'
@@ -8,10 +8,9 @@ import menuItemCustomURLField from '../fields/menuItemCustomURLField'
 import menuItemAnchorField from '../fields/menuItemAnchorField'
 import menuItemCollectionsField from '../fields/menuItemCollectionsField'
 import menuItemNewTabField from '../fields/menuItemNewTabField'
+import createMenuLevels from '../utils/menu'
 
 const Menus = (linkableCollections: string[], allowInlineDocuments: boolean, levels: number) => {
-  //
-
   return {
     slug: 'menus',
     defaultSort: 'name',
@@ -67,6 +66,16 @@ const Menus = (linkableCollections: string[], allowInlineDocuments: boolean, lev
       {
         type: 'array',
         name: 'items',
+        labels: {
+          singular: {
+            de: 'Menüpunkt',
+            en: 'Menu Item',
+          },
+          plural: {
+            de: 'Menüpunkte',
+            en: 'Menu Items',
+          },
+        },
         label: {
           de: 'Menüpunkte',
           en: 'Menu Items',
@@ -83,7 +92,7 @@ const Menus = (linkableCollections: string[], allowInlineDocuments: boolean, lev
         },
         fields: [
           menuItemLabelField,
-          menuItemTypeField({ allowChildElements: true }),
+          menuItemTypeField({ allowChildElements: levels > 1 }),
           menuItemCollectionsField({
             linkableCollections,
             allowInlineDocuments,
@@ -91,68 +100,7 @@ const Menus = (linkableCollections: string[], allowInlineDocuments: boolean, lev
           menuItemCustomURLField,
           menuItemAnchorField,
           menuItemNewTabField,
-          {
-            type: 'array',
-            name: 'items',
-            label: {
-              de: 'Kindelemente',
-              en: 'Child Items',
-            },
-            admin: {
-              components: {
-                RowLabel: MenuItemRowLabel,
-              },
-              condition: (_, siblingData) => siblingData.type === 'children',
-              description: {
-                de: 'Fügen Sie Untermenüpunkte zu diesem Menüpunkt hinzu.',
-                en: 'Add submenu items to this menu item.',
-              },
-            },
-            fields: [
-              menuItemLabelField,
-              menuItemTypeField({
-                allowChildElements: true,
-              }),
-              menuItemCollectionsField({
-                linkableCollections,
-                allowInlineDocuments,
-              }),
-
-              menuItemCustomURLField,
-              menuItemAnchorField,
-              menuItemNewTabField,
-              {
-                type: 'array',
-                name: 'items',
-                label: {
-                  de: 'Kindelemente',
-                  en: 'Child Items',
-                },
-                admin: {
-                  components: {
-                    RowLabel: MenuItemRowLabel,
-                  },
-                  condition: (_, siblingData) => siblingData.type === 'children',
-                  description: {
-                    de: 'Fügen Sie Untermenüpunkte zu diesem Menüpunkt hinzu.',
-                    en: 'Add submenu items to this menu item.',
-                  },
-                },
-                fields: [
-                  menuItemLabelField,
-                  menuItemTypeField(),
-                  menuItemCollectionsField({
-                    linkableCollections,
-                    allowInlineDocuments,
-                  }),
-
-                  menuItemCustomURLField,
-                  menuItemAnchorField,
-                  menuItemNewTabField,
-                ],
-              },
-            ],
-          },
+          ...createMenuLevels(levels, linkableCollections, allowInlineDocuments),
         ],
       },
     ],
