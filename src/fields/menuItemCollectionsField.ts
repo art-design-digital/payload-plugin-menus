@@ -11,7 +11,7 @@ const menuItemCollectionsField = ({
 }: MenuItemCollectionsFieldProps) => {
   return {
     type: 'relationship',
-    name: 'collection',
+    name: 'linkedCollection',
     label: {
       de: 'Sammlung',
       en: 'Collection',
