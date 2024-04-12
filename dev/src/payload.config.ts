@@ -9,6 +9,7 @@ import { slateEditor } from '@payloadcms/richtext-slate'
 
 // @ts-ignore - This file doesn't exist in the project, but it's fine for the example
 import { menuPlugin } from '../../src/index'
+import FancyCollection from './collections/FancyCollection'
 
 export default buildConfig({
   admin: {
@@ -31,7 +32,7 @@ export default buildConfig({
     },
   },
   editor: slateEditor({}),
-  collections: [Examples, Users, Media],
+  collections: [Examples, Users, Media, FancyCollection],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
@@ -41,8 +42,9 @@ export default buildConfig({
   plugins: [
     menuPlugin({
       enabled: true,
-      linkableCollections: ['examples', 'users'],
+      linkableCollections: ['examples', 'users', 'fancy-collection'],
       allowInlineDocuments: true,
+      levels: 3,
     }),
   ],
   db: mongooseAdapter({

@@ -1,11 +1,8 @@
-import type { Config, Plugin } from 'payload/config'
+import type { Plugin } from 'payload/config'
 
 import { defaultPluginOptions, PluginOptionsTypes } from './types'
-import { CollectionConfig, Field } from 'payload/dist/exports/types'
 import deepmerge from './utils/deepmerge'
 import Menus from './collections/Menus'
-
-type PluginType = (userPluginOptions: PluginOptionsTypes) => Plugin
 
 export const menuPlugin =
   (userPluginOptions?: PluginOptionsTypes): Plugin =>
@@ -21,10 +18,11 @@ export const menuPlugin =
 
     const linkableCollections = pluginOptions.linkableCollections || []
     const allowInlineDocuments = pluginOptions.allowInlineDocuments || false
+    const levels = pluginOptions.levels || 1
 
     config.collections = [
       ...(config.collections || []),
-      Menus(linkableCollections, allowInlineDocuments),
+      Menus(linkableCollections, allowInlineDocuments, levels),
     ]
 
     return config

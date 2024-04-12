@@ -23,6 +23,12 @@ export const defaultPluginOptions: PluginOptionsTypes = {
    * @default false
    */
   allowInlineDocuments: false,
+
+  /**
+   * Levels of the menu
+   * @default 1
+   */
+  levels: 1,
 }
 
 export interface PluginOptionsTypes {
@@ -43,4 +49,10 @@ export interface PluginOptionsTypes {
    * @default false
    */
   allowInlineDocuments?: boolean
+
+  /**
+   * Levels of the menu
+   * @default 1
+   */
+  levels?: number
 }

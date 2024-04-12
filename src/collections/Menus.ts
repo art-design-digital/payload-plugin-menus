@@ -1,8 +1,17 @@
 import { formatSlug } from '../utils/slug'
 import MenuItemRowLabel from '../components/MenuItemRowLabel'
 import { CollectionConfig } from 'payload/types'
+import translations from '../translations/translations'
+import menuItemLabelField from '../fields/menuItemLabelField'
+import menuItemTypeField from '../fields/menuItemTypeField'
+import menuItemCustomURLField from '../fields/menuItemCustomURLField'
+import menuItemAnchorField from '../fields/menuItemAnchorField'
+import menuItemCollectionsField from '../fields/menuItemCollectionsField'
+import menuItemNewTabField from '../fields/menuItemNewTabField'
 
-const Menus = (linkableCollections: string[], allowInlineDocuments: boolean) => {
+const Menus = (linkableCollections: string[], allowInlineDocuments: boolean, levels: number) => {
+  //
+
   return {
     slug: 'menus',
     defaultSort: 'name',
@@ -17,14 +26,8 @@ const Menus = (linkableCollections: string[], allowInlineDocuments: boolean) => 
       defaultColumns: ['name', 'slug'],
     },
     labels: {
-      singular: {
-        de: 'Menü',
-        en: 'Menu',
-      },
-      plural: {
-        de: 'Menüs',
-        en: 'Menus',
-      },
+      singular: translations.menuSingular,
+      plural: translations.menuPlural,
     },
     fields: [
       {
@@ -79,99 +82,76 @@ const Menus = (linkableCollections: string[], allowInlineDocuments: boolean) => 
           },
         },
         fields: [
+          menuItemLabelField,
+          menuItemTypeField({ allowChildElements: true }),
+          menuItemCollectionsField({
+            linkableCollections,
+            allowInlineDocuments,
+          }),
+          menuItemCustomURLField,
+          menuItemAnchorField,
+          menuItemNewTabField,
           {
-            type: 'text',
-            name: 'label',
+            type: 'array',
+            name: 'items',
             label: {
-              de: 'Beschriftung',
-              en: 'Label',
+              de: 'Kindelemente',
+              en: 'Child Items',
             },
-            localized: true,
             admin: {
+              components: {
+                RowLabel: MenuItemRowLabel,
+              },
+              condition: (_, siblingData) => siblingData.type === 'children',
               description: {
-                de: 'Geben Sie die Beschriftung für diesen Menüpunkt ein.',
-                en: 'Enter the label for this menu item.',
+                de: 'Fügen Sie Untermenüpunkte zu diesem Menüpunkt hinzu.',
+                en: 'Add submenu items to this menu item.',
               },
             },
-          },
-          {
-            type: 'radio',
-            name: 'type',
-            label: {
-              de: 'Typ des Menüpunktes',
-              en: 'Type of Menu Item',
-            },
-            defaultValue: 'document',
-            options: [
+            fields: [
+              menuItemLabelField,
+              menuItemTypeField({
+                allowChildElements: true,
+              }),
+              menuItemCollectionsField({
+                linkableCollections,
+                allowInlineDocuments,
+              }),
+
+              menuItemCustomURLField,
+              menuItemAnchorField,
+              menuItemNewTabField,
               {
+                type: 'array',
+                name: 'items',
                 label: {
-                  de: 'Dokument',
-                  en: 'Document',
+                  de: 'Kindelemente',
+                  en: 'Child Items',
                 },
-                value: 'document',
-              },
-              {
-                label: {
-                  de: 'Eigener Link',
-                  en: 'Custom link',
+                admin: {
+                  components: {
+                    RowLabel: MenuItemRowLabel,
+                  },
+                  condition: (_, siblingData) => siblingData.type === 'children',
+                  description: {
+                    de: 'Fügen Sie Untermenüpunkte zu diesem Menüpunkt hinzu.',
+                    en: 'Add submenu items to this menu item.',
+                  },
                 },
-                value: 'custom',
+                fields: [
+                  menuItemLabelField,
+                  menuItemTypeField(),
+                  menuItemCollectionsField({
+                    linkableCollections,
+                    allowInlineDocuments,
+                  }),
+
+                  menuItemCustomURLField,
+                  menuItemAnchorField,
+                  menuItemNewTabField,
+                ],
               },
             ],
-            admin: {
-              description: {
-                de: 'Wählen Sie den Typen aus den dieser Menüpunkt haben soll.',
-                en: 'Select the type this menu item should have.',
-              },
-            },
-          },
-          {
-            type: 'relationship',
-            name: 'document',
-            label: {
-              de: 'Dokument',
-              en: 'Document',
-            },
-            relationTo: linkableCollections,
-            admin: {
-              allowCreate: allowInlineDocuments,
-              condition: (_, siblingData) => siblingData.type === 'document',
-              description: {
-                de: 'Wählen Sie das Dokument aus, das mit diesem Menüpunkt verlinkt werden soll.',
-                en: 'Select the document that should be linked with this menu item.',
-              },
-            },
-          },
-          {
-            type: 'text',
-            name: 'customURL',
-            label: {
-              de: 'Link-URL',
-              en: 'Link-URL',
-            },
-            localized: true,
-            admin: {
-              condition: (_, siblingData) => siblingData.type === 'custom',
-              description: {
-                de: 'Geben Sie die URL ein, die mit diesem Menüpunkt verlinkt werden soll.',
-                en: 'Enter the URL that should be linked with this menu item.',
-              },
-            },
-          },
-
-          {
-            type: 'text',
-            name: 'anchor',
-            label: {
-              de: 'Anker',
-              en: 'Anchor',
-            },
-            admin: {
-              description: {
-                de: 'Geben Sie den Anker (ohne #) für diesen Menüpunkt ein. Dieser wird verwendet, um auf eine bestimmte Stelle auf der Seite zu verlinken.',
-                en: 'Enter the anchor (without #) for this menu item. This is used to link to a specific location on the page.',
-              },
-            },
           },
         ],
       },
