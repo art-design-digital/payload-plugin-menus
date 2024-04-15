@@ -21,78 +21,45 @@ const Menus = (linkableCollections: string[], allowInlineDocuments: boolean, lev
       delete: ({ req }) => req.user,
     },
     admin: {
-      description: {
-        de: 'Menüs sind eine Sammlung von Menüpunkten, die auf der Website angezeigt werden.',
-        en: 'Menus are a collection of menu items that are displayed on the website.',
-      },
+      description: translations.collection.description,
       useAsTitle: 'name',
       defaultColumns: ['name', 'slug'],
     },
-    labels: {
-      singular: translations.menuSingular,
-      plural: translations.menuPlural,
-    },
+    labels: translations.collection.labels,
     fields: [
       {
         type: 'text',
         name: 'name',
-        label: {
-          de: 'Name',
-          en: 'Name',
-        },
+        label: translations.fields.name.label,
         required: true,
         admin: {
-          description: {
-            de: 'Geben Sie einen Namen für das Menü ein.',
-            en: 'Enter a name for the menu.',
-          },
+          description: translations.fields.name.description,
         },
         localized: true,
       },
       {
         type: 'text',
         name: 'slug',
-        label: {
-          de: 'Slug',
-          en: 'Slug',
-        },
+        label: translations.fields.slug.label,
         hooks: {
           beforeValidate: [formatSlug],
         },
         admin: {
           readOnly: true,
-          description: {
-            de: 'Der Slug wird automatisch generiert, wenn Sie den Namen eingeben und speichern. Er dient als eindeutiger Bezeichner für das Menü.',
-            en: 'The slug is generated automatically when you enter and save the name. It serves as a unique identifier for the menu.',
-          },
+          description: translations.fields.slug.description,
         },
       },
       {
         type: 'array',
         name: 'items',
-        labels: {
-          singular: {
-            de: 'Menüpunkt',
-            en: 'Menu Item',
-          },
-          plural: {
-            de: 'Menüpunkte',
-            en: 'Menu Items',
-          },
-        },
-        label: {
-          de: 'Menüpunkte',
-          en: 'Menu Items',
-        },
+        label: translations.fields.items.label,
+        labels: translations.fields.items.labels,
         minRows: 1,
         admin: {
           components: {
             RowLabel: MenuItemRowLabel,
           },
-          description: {
-            de: 'Fügen Sie Menüpunkte zu diesem Menü hinzu.',
-            en: 'Add menu items to this menu.',
-          },
+          description: translations.fields.items.description,
         },
         fields: [
           menuItemLabelField,

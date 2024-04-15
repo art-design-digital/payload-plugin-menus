@@ -1,4 +1,5 @@
 import { Field } from 'payload/types'
+import translations from '../translations/translations'
 
 type MenuItemCollectionsFieldProps = {
   linkableCollections: string[]
@@ -12,18 +13,12 @@ const menuItemCollectionsField = ({
   return {
     type: 'relationship',
     name: 'linkedCollection',
-    label: {
-      de: 'Sammlung',
-      en: 'Collection',
-    },
+    label: translations.fields.items.collections.label,
     relationTo: linkableCollections,
     admin: {
       allowCreate: allowInlineDocuments,
       condition: (_, siblingData) => siblingData.type === 'collection',
-      description: {
-        de: 'Wählen Sie die Sammlung aus, die mit diesem Menüpunkt verlinkt werden soll.',
-        en: 'Select the collection that should be linked with this menu item.',
-      },
+      description: translations.fields.items.collections.description,
     },
   } as Field
 }

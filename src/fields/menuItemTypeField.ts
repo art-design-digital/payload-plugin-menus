@@ -1,4 +1,5 @@
 import { Field } from 'payload/types'
+import translations from '../translations/translations'
 
 type MenuItemTypeFieldProps = {
   allowChildElements?: boolean
@@ -7,27 +8,18 @@ type MenuItemTypeFieldProps = {
 const menuItemTypeField = (props?: MenuItemTypeFieldProps) => {
   const options = [
     {
-      label: {
-        de: 'Sammlung',
-        en: 'Collection',
-      },
+      label: translations.fields.items.type.options.collection.label,
       value: 'collection',
     },
     {
-      label: {
-        de: 'Eigener Link',
-        en: 'Custom link',
-      },
+      label: translations.fields.items.type.options.custom.label,
       value: 'custom',
     },
   ]
 
   if (props?.allowChildElements) {
     options.push({
-      label: {
-        de: 'Mit Kindelementen',
-        en: 'With child elements',
-      },
+      label: translations.fields.items.type.options.children.label,
       value: 'children',
     })
   }
@@ -35,17 +27,11 @@ const menuItemTypeField = (props?: MenuItemTypeFieldProps) => {
   return {
     type: 'radio',
     name: 'type',
-    label: {
-      de: 'Typ des Menüpunktes',
-      en: 'Type of Menu Item',
-    },
+    label: translations.fields.items.type.label,
     defaultValue: 'collection',
     options: options,
     admin: {
-      description: {
-        de: 'Wählen Sie den Typen aus den dieser Menüpunkt haben soll.',
-        en: 'Select the type this menu item should have.',
-      },
+      description: translations.fields.items.type.description,
     },
   } as Field
 }

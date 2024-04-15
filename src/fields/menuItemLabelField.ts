@@ -1,18 +1,13 @@
 import { Field } from 'payload/types'
+import translations from '../translations/translations'
 
 const menuItemLabelField: Field = {
   type: 'text',
   name: 'label',
-  label: {
-    de: 'Beschriftung',
-    en: 'Label',
-  },
+  label: translations.fields.items.labelField.label,
   localized: true,
   admin: {
-    description: {
-      de: 'Geben Sie die Beschriftung für diesen Menüpunkt ein.',
-      en: 'Enter the label for this menu item.',
-    },
+    description: translations.fields.items.labelField.description,
   },
 }
 

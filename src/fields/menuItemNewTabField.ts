@@ -1,19 +1,14 @@
 import { Field } from 'payload/types'
+import translations from '../translations/translations'
 
 const menuItemNewTabField: Field = {
   type: 'checkbox',
   name: 'newTab',
-  label: {
-    de: 'In neuem Tab öffnen',
-    en: 'Open in new tab',
-  },
+  label: translations.fields.items.newTab.label,
   admin: {
     position: 'sidebar',
     condition: (_, siblingData) => siblingData.type !== 'children',
-    description: {
-      de: 'Wählen Sie diese Option, um den Link in einem neuen Tab zu öffnen.',
-      en: 'Select this option to open the link in a new tab.',
-    },
+    description: translations.fields.items.newTab.description,
   },
 }
 
