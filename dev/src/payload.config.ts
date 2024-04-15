@@ -44,7 +44,7 @@ export default buildConfig({
       enabled: true,
       linkableCollections: ['examples', 'users', 'fancy-collection'],
       allowInlineDocuments: false,
-      levels: 3,
+      levels: 2,
     }),
   ],
   db: mongooseAdapter({

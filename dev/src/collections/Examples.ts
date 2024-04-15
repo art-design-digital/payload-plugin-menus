@@ -15,6 +15,10 @@ const Examples: CollectionConfig = {
       type: 'text',
       localized: true,
     },
+    {
+      name: 'slug',
+      type: 'text',
+    },
   ],
 }
 
