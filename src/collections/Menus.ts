@@ -1,6 +1,6 @@
 import { formatSlug } from '../utils/slug'
 import MenuItemRowLabel from '../components/MenuItemRowLabel'
-import { CollectionConfig, Field, Fields } from 'payload/types'
+import { CollectionConfig } from 'payload/types'
 import translations from '../translations/translations'
 import menuItemLabelField from '../fields/menuItemLabelField'
 import menuItemTypeField from '../fields/menuItemTypeField'
@@ -15,12 +15,16 @@ const Menus = (linkableCollections: string[], allowInlineDocuments: boolean, lev
     slug: 'menus',
     defaultSort: 'name',
     access: {
-      create: () => true,
-      read: () => true,
-      update: () => true,
-      delete: () => true,
+      create: ({ req }) => req.user,
+      read: ({ req }) => req.user,
+      update: ({ req }) => req.user,
+      delete: ({ req }) => req.user,
     },
     admin: {
+      description: {
+        de: 'Menüs sind eine Sammlung von Menüpunkten, die auf der Website angezeigt werden.',
+        en: 'Menus are a collection of menu items that are displayed on the website.',
+      },
       useAsTitle: 'name',
       defaultColumns: ['name', 'slug'],
     },

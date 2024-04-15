@@ -43,7 +43,7 @@ export default buildConfig({
     menuPlugin({
       enabled: true,
       linkableCollections: ['examples', 'users', 'fancy-collection'],
-      allowInlineDocuments: true,
+      allowInlineDocuments: false,
       levels: 3,
     }),
   ],
