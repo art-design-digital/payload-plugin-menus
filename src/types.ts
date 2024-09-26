@@ -13,6 +13,12 @@ export const defaultPluginOptions: PluginOptionsTypes = {
   enabled: false,
 
   /**
+   * Admin group name
+   * @default ''
+   */
+  adminGroup: undefined,
+
+  /**
    * Defines which collections are usable in the menu
    * @default []
    */
@@ -37,6 +43,12 @@ export interface PluginOptionsTypes {
    * @default false
    */
   enabled?: boolean
+
+  /**
+   * Admin group name
+   * @default ''
+   */
+  adminGroup?: string | { [key: string]: string }
 
   /**
    * Defines which collections are usable in the menu

@@ -19,10 +19,11 @@ export const menuPlugin =
     const linkableCollections = pluginOptions.linkableCollections || []
     const allowInlineDocuments = pluginOptions.allowInlineDocuments || false
     const levels = pluginOptions.levels || 1
+    const adminGroup = pluginOptions.adminGroup || undefined
 
     config.collections = [
       ...(config.collections || []),
-      Menus(linkableCollections, allowInlineDocuments, levels),
+      Menus(linkableCollections, allowInlineDocuments, levels, adminGroup),
     ]
 
     return config

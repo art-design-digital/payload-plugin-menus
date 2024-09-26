@@ -10,7 +10,12 @@ import menuItemCollectionsField from '../fields/menuItemCollectionsField'
 import menuItemNewTabField from '../fields/menuItemNewTabField'
 import createMenuLevels from '../utils/menu'
 
-const Menus = (linkableCollections: string[], allowInlineDocuments: boolean, levels: number) => {
+const Menus = (
+  linkableCollections: string[],
+  allowInlineDocuments: boolean,
+  levels: number,
+  adminGroup?: string | { [key: string]: string },
+) => {
   return {
     slug: 'menus',
     defaultSort: 'name',
@@ -21,6 +26,7 @@ const Menus = (linkableCollections: string[], allowInlineDocuments: boolean, lev
       delete: ({ req }) => req.user,
     },
     admin: {
+      group: adminGroup,
       description: translations.collection.description,
       useAsTitle: 'name',
       defaultColumns: ['name', 'slug'],
