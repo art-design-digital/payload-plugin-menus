@@ -18,7 +18,14 @@ const menuItemPreviewImageField = (props?: MenuItemPreviewImageFieldProps) => {
           description: translations.fields.items.previewImageField.description,
         },
       } as Field)
-    : ({} as Field)
+    : ({
+        type: 'text',
+        name: 'hidden',
+        admin: {
+          disabled: true,
+          hidden: true,
+        },
+      } as Field)
 }
 
 export default menuItemPreviewImageField
