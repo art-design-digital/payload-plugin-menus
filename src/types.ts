@@ -35,6 +35,18 @@ export const defaultPluginOptions: PluginOptionsTypes = {
    * @default 1
    */
   levels: 1,
+
+  /**
+   * Allow preview images
+   * @default false
+   */
+  allowPreviewImages: false,
+
+  /**
+   * Preview image media collection
+   * @default undefined
+   */
+  previewImageMediaCollection: undefined,
 }
 
 export interface PluginOptionsTypes {
@@ -67,4 +79,16 @@ export interface PluginOptionsTypes {
    * @default 1
    */
   levels?: number
+
+  /**
+   * Allow preview images
+   * @default false
+   */
+  allowPreviewImages?: boolean
+
+  /**
+   * Preview image media collection
+   * @default undefined
+   */
+  previewImageMediaCollection?: string | undefined
 }

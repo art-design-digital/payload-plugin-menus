@@ -20,10 +20,19 @@ export const menuPlugin =
     const allowInlineDocuments = pluginOptions.allowInlineDocuments || false
     const levels = pluginOptions.levels || 1
     const adminGroup = pluginOptions.adminGroup || undefined
+    const allowPreviewImages = pluginOptions.allowPreviewImages || false
+    const previewImageMediaCollection = pluginOptions.previewImageMediaCollection || undefined
 
     config.collections = [
       ...(config.collections || []),
-      Menus(linkableCollections, allowInlineDocuments, levels, adminGroup),
+      Menus(
+        linkableCollections,
+        allowInlineDocuments,
+        levels,
+        adminGroup,
+        allowPreviewImages,
+        previewImageMediaCollection,
+      ),
     ]
 
     return config

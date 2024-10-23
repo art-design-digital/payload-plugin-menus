@@ -66,7 +66,18 @@ const translations = {
         de: 'Fügen Sie Menüpunkte zu diesem Menü hinzu.',
         fr: 'Ajoutez des éléments de menu à ce menu.',
       },
-
+      previewImageField: {
+        label: {
+          en: 'Preview Image',
+          de: 'Vorschaubild',
+          fr: 'Image de prévisualisation',
+        },
+        description: {
+          en: 'Upload an preview image for this menu item.',
+          de: 'Laden Sie ein Vorschaubild für diesen Menüpunkt hoch.',
+          fr: 'Téléchargez une image de prévisualisation pour cet élément de menu.',
+        },
+      },
       labelField: {
         label: {
           en: 'Label',

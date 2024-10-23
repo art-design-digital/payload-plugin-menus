@@ -9,12 +9,15 @@ import menuItemAnchorField from '../fields/menuItemAnchorField'
 import menuItemCollectionsField from '../fields/menuItemCollectionsField'
 import menuItemNewTabField from '../fields/menuItemNewTabField'
 import createMenuLevels from '../utils/menu'
+import menuItemPreviewImageField from '../fields/menuItemPreviewImageField'
 
 const Menus = (
   linkableCollections: string[],
   allowInlineDocuments: boolean,
   levels: number,
   adminGroup?: string | { [key: string]: string },
+  allowPreviewImages?: boolean,
+  previewImageMediaCollection?: string | undefined,
 ) => {
   return {
     slug: 'menus',
@@ -77,6 +80,7 @@ const Menus = (
           menuItemCustomURLField,
           menuItemAnchorField,
           menuItemNewTabField,
+          menuItemPreviewImageField({ allowPreviewImages, previewImageMediaCollection }),
           ...createMenuLevels(levels, linkableCollections, allowInlineDocuments),
         ],
       },
