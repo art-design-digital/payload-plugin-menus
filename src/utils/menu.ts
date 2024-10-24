@@ -6,12 +6,15 @@ import menuItemCollectionsField from '../fields/menuItemCollectionsField'
 import menuItemCustomURLField from '../fields/menuItemCustomURLField'
 import menuItemAnchorField from '../fields/menuItemAnchorField'
 import menuItemNewTabField from '../fields/menuItemNewTabField'
+import menuItemPreviewImageField from '../fields/menuItemPreviewImageField'
 
 const createMenuLevels = (
   levels: number,
   linkableCollections: string[],
   allowInlineDocuments: boolean,
   currentLevel = 1,
+  allowPreviewImages?: boolean,
+  previewImageMediaCollection?: string | undefined,
 ): Field[] => {
   if (currentLevel >= levels) return []
 
@@ -49,7 +52,18 @@ const createMenuLevels = (
         menuItemCustomURLField,
         menuItemAnchorField,
         menuItemNewTabField,
-        ...createMenuLevels(levels, linkableCollections, allowInlineDocuments, currentLevel + 1), // Rekursiver Aufruf
+        menuItemPreviewImageField({
+          allowPreviewImages,
+          previewImageMediaCollection,
+        }),
+        ...createMenuLevels(
+          levels,
+          linkableCollections,
+          allowInlineDocuments,
+          currentLevel + 1,
+          allowPreviewImages,
+          previewImageMediaCollection,
+        ), // Rekursiver Aufruf
       ],
     },
   ]

@@ -16,6 +16,7 @@ const menuItemPreviewImageField = (props?: MenuItemPreviewImageFieldProps) => {
         localized: true,
         admin: {
           description: translations.fields.items.previewImageField.description,
+          condition: (_, siblingData) => siblingData.type === 'children',
         },
       } as Field)
     : ({
