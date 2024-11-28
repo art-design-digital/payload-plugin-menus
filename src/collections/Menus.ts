@@ -10,6 +10,7 @@ import menuItemCollectionsField from '../fields/menuItemCollectionsField'
 import menuItemNewTabField from '../fields/menuItemNewTabField'
 import createMenuLevels from '../utils/menu'
 import menuItemPreviewImageField from '../fields/menuItemPreviewImageField'
+import menuItemHighlightField from '../fields/menuItemHighlightField'
 
 const Menus = (
   linkableCollections: string[],
@@ -71,6 +72,7 @@ const Menus = (
           description: translations.fields.items.description,
         },
         fields: [
+          menuItemHighlightField,
           menuItemLabelField,
           menuItemTypeField({ allowChildElements: levels > 1 }),
           menuItemCollectionsField({

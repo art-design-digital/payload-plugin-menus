@@ -90,7 +90,18 @@ const translations = {
           fr: 'Entrez l’étiquette de cet élément de menu.',
         },
       },
-
+      highlightField: {
+        label: {
+          en: 'Highlight Menu Item',
+          de: 'Menüpunkt Hervorheben',
+          fr: 'Surligner l’élément de menu',
+        },
+        description: {
+          en: 'Select this option to highlight this menu item.',
+          de: 'Wählen Sie diese Option, um diesen Menüpunkt hervorzuheben.',
+          fr: 'Sélectionnez cette option pour mettre en surbrillance cet élément de menu.',
+        },
+      },
       type: {
         label: {
           en: 'Type of Menu Item',
