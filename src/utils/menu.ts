@@ -7,6 +7,7 @@ import menuItemCustomURLField from '../fields/menuItemCustomURLField'
 import menuItemAnchorField from '../fields/menuItemAnchorField'
 import menuItemNewTabField from '../fields/menuItemNewTabField'
 import menuItemPreviewImageField from '../fields/menuItemPreviewImageField'
+import menuItemDistanceField from '../fields/menuItemDistanceField'
 
 const createMenuLevels = (
   levels: number,
@@ -43,6 +44,7 @@ const createMenuLevels = (
         condition: (_, siblingData) => siblingData.type === 'children',
       },
       fields: [
+        menuItemDistanceField,
         menuItemLabelField,
         menuItemTypeField({ allowChildElements: currentLevel < levels - 1 }),
         menuItemCollectionsField({

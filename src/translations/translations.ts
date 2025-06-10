@@ -102,6 +102,18 @@ const translations = {
           fr: 'Sélectionnez cette option pour mettre en surbrillance cet élément de menu.',
         },
       },
+      distanceField: {
+        label: {
+          en: 'Distance to Previous Menu Item',
+          de: 'Abstand zum vorherigen Menüpunkt',
+          fr: 'Distance au menu précédent',
+        },
+        description: {
+          en: 'Select this option to give this menu item more space from the previous menu item.',
+          de: 'Wählen Sie diese Option, um diesen Menüpunkt mehr Abstand zum vorherigen Menüpunkt zu geben.',
+          fr: 'Sélectionnez cette option pour donner plus d’espace à cet élément de menu par rapport à l’élément précédent.',
+        },
+      },
       type: {
         label: {
           en: 'Type of Menu Item',
