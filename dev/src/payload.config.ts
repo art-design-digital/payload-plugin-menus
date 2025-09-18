@@ -45,8 +45,8 @@ export default buildConfig({
       linkableCollections: ['examples', 'users', 'fancy-collection'],
       allowInlineDocuments: false,
       levels: 2,
-      allowPreviewImages: true,
-      previewImageMediaCollection: 'media',
+      allowIcons: true,
+      iconPack: 'Phosphor Icons',
     }),
   ],
   db: mongooseAdapter({

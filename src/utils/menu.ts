@@ -8,6 +8,9 @@ import menuItemAnchorField from '../fields/menuItemAnchorField'
 import menuItemNewTabField from '../fields/menuItemNewTabField'
 import menuItemPreviewImageField from '../fields/menuItemPreviewImageField'
 import menuItemDistanceField from '../fields/menuItemDistanceField'
+import menuItemHighlightField from '../fields/menuItemHighlightField'
+import menuItemIconField from '../fields/menuItemIconField'
+import type { IconPackType } from '../fields/iconPickerField'
 
 const createMenuLevels = (
   levels: number,
@@ -16,6 +19,8 @@ const createMenuLevels = (
   currentLevel = 1,
   allowPreviewImages?: boolean,
   previewImageMediaCollection?: string | undefined,
+  allowIcons?: boolean,
+  iconPack?: IconPackType,
 ): Field[] => {
   if (currentLevel >= levels) return []
 
@@ -45,6 +50,11 @@ const createMenuLevels = (
       },
       fields: [
         menuItemDistanceField,
+        menuItemHighlightField,
+        menuItemIconField({
+          allowIcons,
+          iconPack,
+        }),
         menuItemLabelField,
         menuItemTypeField({ allowChildElements: currentLevel < levels - 1 }),
         menuItemCollectionsField({
@@ -65,6 +75,8 @@ const createMenuLevels = (
           currentLevel + 1,
           allowPreviewImages,
           previewImageMediaCollection,
+          allowIcons,
+          iconPack,
         ), // Rekursiver Aufruf
       ],
     },

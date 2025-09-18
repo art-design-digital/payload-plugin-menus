@@ -111,7 +111,19 @@ const translations = {
         description: {
           en: 'Select this option to give this menu item more space from the previous menu item.',
           de: 'Wählen Sie diese Option, um diesen Menüpunkt mehr Abstand zum vorherigen Menüpunkt zu geben.',
-          fr: 'Sélectionnez cette option pour donner plus d’espace à cet élément de menu par rapport à l’élément précédent.',
+          fr: "Sélectionnez cette option pour donner plus d'espace à cet élément de menu par rapport à l'élément précédent.",
+        },
+      },
+      iconField: {
+        label: {
+          en: 'Icon',
+          de: 'Icon',
+          fr: 'Icône',
+        },
+        description: {
+          en: 'Select an icon for this menu item.',
+          de: 'Wählen Sie ein Icon für diesen Menüpunkt.',
+          fr: "Sélectionnez une icône pour cet élément de menu.",
         },
       },
       type: {

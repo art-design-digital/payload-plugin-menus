@@ -47,6 +47,18 @@ export const defaultPluginOptions: PluginOptionsTypes = {
    * @default undefined
    */
   previewImageMediaCollection: undefined,
+
+  /**
+   * Allow icons for menu items
+   * @default false
+   */
+  allowIcons: false,
+
+  /**
+   * Icon pack to use
+   * @default 'Phosphor Icons'
+   */
+  iconPack: 'Phosphor Icons' as const,
 }
 
 export interface PluginOptionsTypes {
@@ -91,4 +103,16 @@ export interface PluginOptionsTypes {
    * @default undefined
    */
   previewImageMediaCollection?: string | undefined
+
+  /**
+   * Allow icons for menu items
+   * @default false
+   */
+  allowIcons?: boolean
+
+  /**
+   * Icon pack to use (Phosphor Icons, Bootstrap Icons, etc.)
+   * @default 'Phosphor Icons'
+   */
+  iconPack?: 'Bootstrap Icons' | 'Feather' | 'Font Awesome 5' | 'Font Awesome 6' | 'Ionicons 4' | 'Ionicons 5' | 'Lucide' | 'Material Design icons' | 'Icons8 Line Awesome' | 'Phosphor Icons'
 }

@@ -22,6 +22,8 @@ export const menuPlugin =
     const adminGroup = pluginOptions.adminGroup || undefined
     const allowPreviewImages = pluginOptions.allowPreviewImages || false
     const previewImageMediaCollection = pluginOptions.previewImageMediaCollection || undefined
+    const allowIcons = pluginOptions.allowIcons || false
+    const iconPack = pluginOptions.iconPack || 'Phosphor Icons'
 
     config.collections = [
       ...(config.collections || []),
@@ -32,6 +34,8 @@ export const menuPlugin =
         adminGroup,
         allowPreviewImages,
         previewImageMediaCollection,
+        allowIcons,
+        iconPack,
       ),
     ]
 

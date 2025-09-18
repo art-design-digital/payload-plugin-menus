@@ -11,6 +11,8 @@ import menuItemNewTabField from '../fields/menuItemNewTabField'
 import createMenuLevels from '../utils/menu'
 import menuItemPreviewImageField from '../fields/menuItemPreviewImageField'
 import menuItemHighlightField from '../fields/menuItemHighlightField'
+import menuItemIconField from '../fields/menuItemIconField'
+import type { IconPackType } from '../fields/iconPickerField'
 
 const Menus = (
   linkableCollections: string[],
@@ -19,6 +21,8 @@ const Menus = (
   adminGroup?: string | { [key: string]: string },
   allowPreviewImages?: boolean,
   previewImageMediaCollection?: string | undefined,
+  allowIcons?: boolean,
+  iconPack?: IconPackType,
 ) => {
   return {
     slug: 'menus',
@@ -73,6 +77,10 @@ const Menus = (
         },
         fields: [
           menuItemHighlightField,
+          menuItemIconField({
+            allowIcons,
+            iconPack,
+          }),
           menuItemLabelField,
           menuItemTypeField({ allowChildElements: levels > 1 }),
           menuItemCollectionsField({
@@ -93,6 +101,8 @@ const Menus = (
             1,
             allowPreviewImages,
             previewImageMediaCollection,
+            allowIcons,
+            iconPack,
           ),
         ],
       },
