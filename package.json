@@ -15,7 +15,8 @@
     "menu"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && yarn copy-files",
+    "copy-files": "copyfiles -u 1 \"src/**/*.css\" dist",
     "test": "cd dev && yarn test",
     "lint": "eslint src",
     "lint:fix": "eslint --fix --ext .ts,.tsx src",
@@ -33,6 +34,7 @@
     "@types/jest": "^29.5.11",
     "@typescript-eslint/eslint-plugin": "5.12.1",
     "@typescript-eslint/parser": "5.12.1",
+    "copyfiles": "^2.4.1",
     "dotenv": "^8.2.0",
     "eslint": "^8.19.0",
     "eslint-config-airbnb-base": "^14.2.1",
