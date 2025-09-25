@@ -24,6 +24,7 @@ export const menuPlugin =
     const previewImageMediaCollection = pluginOptions.previewImageMediaCollection || undefined
     const allowIcons = pluginOptions.allowIcons || false
     const iconPack = pluginOptions.iconPack || 'Phosphor Icons'
+    const access = pluginOptions.access || undefined
 
     config.collections = [
       ...(config.collections || []),
@@ -36,6 +37,7 @@ export const menuPlugin =
         previewImageMediaCollection,
         allowIcons,
         iconPack,
+        access,
       ),
     ]
 

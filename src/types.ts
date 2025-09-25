@@ -1,3 +1,5 @@
+import type { Access } from 'payload/types'
+
 /**
  * Default options for the plugin
  *
@@ -59,6 +61,12 @@ export const defaultPluginOptions: PluginOptionsTypes = {
    * @default 'Phosphor Icons'
    */
   iconPack: 'Phosphor Icons' as const,
+
+  /**
+   * Access control for the menus collection
+   * @default undefined
+   */
+  access: undefined,
 }
 
 export interface PluginOptionsTypes {
@@ -115,4 +123,10 @@ export interface PluginOptionsTypes {
    * @default 'Phosphor Icons'
    */
   iconPack?: 'Bootstrap Icons' | 'Feather' | 'Font Awesome 5' | 'Font Awesome 6' | 'Ionicons 4' | 'Ionicons 5' | 'Lucide' | 'Material Design icons' | 'Icons8 Line Awesome' | 'Phosphor Icons'
+
+  /**
+   * Access control for the menus collection
+   * @default undefined
+   */
+  access?: Partial<Access>
 }

@@ -1,6 +1,6 @@
 import { formatSlug } from '../utils/slug'
 import MenuItemRowLabel from '../components/MenuItemRowLabel'
-import { CollectionConfig } from 'payload/types'
+import { CollectionConfig, Access } from 'payload/types'
 import translations from '../translations/translations'
 import menuItemLabelField from '../fields/menuItemLabelField'
 import menuItemTypeField from '../fields/menuItemTypeField'
@@ -23,11 +23,12 @@ const Menus = (
   previewImageMediaCollection?: string | undefined,
   allowIcons?: boolean,
   iconPack?: IconPackType,
+  access?: Partial<Access>,
 ) => {
   return {
     slug: 'menus',
     defaultSort: 'name',
-    access: {
+    access: access || {
       create: ({ req }) => req.user,
       read: ({ req }) => req.user,
       update: ({ req }) => req.user,
